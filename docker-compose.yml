@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  backend:
+    image: node:lts-alpine
+    container_name: backendIndustry
+    working_dir: /backend
+    volumes:
+      - ./backend:/backend
+    ports:
+      - 8881:8100
+    command: sh -c "npm i && npm run dev"
+    # command: sh -c "npm i && npm start"
+    restart: unless-stopped
+    networks:
+      - Industry
+
+volumes:
+  data:
+
+
+networks:
+  Industry:
